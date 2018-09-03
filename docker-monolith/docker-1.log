@@ -1,0 +1,7 @@
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+overmind88/ubuntu-tmp-file   latest              702b483750d7        2 minutes ago       115MB
+ubuntu                       16.04               7aa3602ab41e        3 weeks ago         115MB
+hello-world                  latest              2cb0d9787c4d        5 weeks ago         1.85kB
+
+
+Из вывода команды docker inspect можно сделать вывод, что контейнер от образа отличается наличием информации о запущенных приложениях, состоянии, параметров сети, квоты, точек входа.
