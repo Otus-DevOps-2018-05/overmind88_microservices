@@ -2,6 +2,7 @@
 variables.json
 *.tfstate
 *.tfstate.*.backup
+*.tfstate.*.info
 *.tfstate.backup
 *.tfvars
 .terraform/
