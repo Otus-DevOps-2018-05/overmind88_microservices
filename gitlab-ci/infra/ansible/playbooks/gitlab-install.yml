@@ -2,7 +2,7 @@
 - name: "Gitlab deploy"
   hosts: all
   become: true
-  tags: docker-host
+  tags: docker-container
   tasks:
     - name: "Create folders for Gitlab"
       file:
