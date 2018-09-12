@@ -37,7 +37,7 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 - Для контейнеров UI и comment написаны Dockerfile.1 с созданием образа на основе alpine
 - В .travis.yml добавдена проверка hadolint
 
-# ДЗ №14
+# ДЗ №15
 
 Что было сделано:
 - Изучена работа драйверов для сети none, host, bridge
@@ -50,9 +50,11 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 
 1. https://docs.docker.com/compose/reference/envvars/#compose_project_name
 
-# ДЗ №14
+# ДЗ №16
 
 Что было сделано:
-- Сделано разворачивание инстанса gitlab через terraform и ansible
+- Сделано разворачивание инстанса gitlab через terraform и ansible по подобию
+того как было сделано в docker-3
 - - terraform apply
-- - ansible-playbook --tags "docker-host"  playbooks/site.yml
+- - ansible-playbook --tags "docker-host" playbooks/site.yml
+- Все задачи связанные с настройкой пайплайна в gitlab
