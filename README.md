@@ -49,3 +49,10 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 - - Создан docker-compose.override.yml в котором код каждого приложения монтируется из локального каталога в volume. Это хорошо работает для локальной разработки - файлы меняются в локальном каталоге и изменения тут же отражаются при обновлении страницы на локалхосте. При использовании docker-machine такой подход вызывает сложности - небоходимо либо копировать код каждый раз на хост с докером либо изменять код непосредственно на нём.
 
 1. https://docs.docker.com/compose/reference/envvars/#compose_project_name
+
+# ДЗ №14
+
+Что было сделано:
+- Сделано разворачивание инстанса gitlab через terraform и ansible
+- - terraform apply
+- - ansible-playbook --tags "docker-host"  playbooks/site.yml
