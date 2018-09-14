@@ -1,6 +1,6 @@
 ---
 - name: Install Docker
-  hosts: all
+  hosts: tag_docker-host
   become: true
   tags: docker-host
 

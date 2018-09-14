@@ -1,0 +1,32 @@
+---
+- name: "Gitlab Runners deploy"
+  hosts: tag_gitlab-runner, tag_docker-host
+  become: true
+  tags: docker-container
+  vars:
+    token: '5m2KNGdsLkfF-3G-DdRH'
+    runner_name: "{{ inventory_hostname }}"
+
+  tasks:
+
+    - name: Run application container
+      docker_container:
+        name: "{{ runner_name }}"
+        state: started
+        restart_policy: always
+        image: "gitlab/gitlab-runner:latest"
+        volumes:
+          - '/srv/gitlab-runner/config:/etc/gitlab-runner'
+          - '/var/run/docker.sock:/var/run/docker.sock'
+
+    - name: register runner
+      raw: docker exec -it {{ runner_name }} gitlab-runner register \
+        --non-interactive \
+        --executor "docker" \
+        --docker-image alpine:latest \
+        --url "http://{{ hostvars['docker-host-0'].gce_public_ip }}/" \
+        --registration-token "{{ token }}" \
+        --description "{{ runner_name }}" \
+        --tag-list "linux,xenial,ubuntu,docker" \
+        --run-untagged \
+        --locked="false"

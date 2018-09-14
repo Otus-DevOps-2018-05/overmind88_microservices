@@ -54,7 +54,7 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 
 Что было сделано:
 - Сделано разворачивание инстанса gitlab через terraform и ansible по подобию
-того как было сделано в docker-3. docker-compose.yml не используется,
+того как было сделано в docker-2. docker-compose.yml не используется,
 всё заgускается через ansible
 - - terraform apply
 - - ansible-playbook --tags "docker-container" playbooks/site.yml

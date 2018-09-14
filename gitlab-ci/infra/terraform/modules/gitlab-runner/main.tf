@@ -1,9 +1,9 @@
-resource "google_compute_instance" "docker-host" {
-  name         = "docker-host-${count.index}"
-  machine_type = "n1-standard-1"
+resource "google_compute_instance" "gitlab-runner" {
+  name         = "gitlab-runner-${count.index}"
+  machine_type = "g1-small"
   zone         = "${var.zone}"
   count        = "${var.instance_count}"
-  tags         = ["docker-host"]
+  tags         = ["gitlab-runner"]
 
   boot_disk {
     initialize_params {
@@ -22,6 +22,6 @@ resource "google_compute_instance" "docker-host" {
   }
 }
 
-#resource "google_compute_address" "docker-host_ip" {
-#  name = "docker-host-ip"
+#resource "google_compute_address" "gitlab-runner_ip" {
+#  name = "gitlab-runner-ip"
 #}

@@ -12,6 +12,14 @@ module "docker" {
   private_key_path = "${var.private_key_path}"
 }
 
+module "gitlab-runner" {
+  source           = "./modules/gitlab-runner"
+  public_key_path  = "${var.public_key_path}"
+  zone             = "${var.zone}"
+  app_disk_image   = "${var.app_disk_image}"
+  private_key_path = "${var.private_key_path}"
+}
+
 module "vpc" {
   source          = "./modules/vpc"
   public_key_path = "${var.public_key_path}"
