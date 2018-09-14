@@ -59,3 +59,6 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 - - terraform apply
 - - ansible-playbook --tags "docker-container" playbooks/site.yml
 - Все задачи связанные с настройкой пайплайна в gitlab
+- Задание со * по разворачиванию раннеров. Разворачивание описано в terraform и
+ansible
+- Задание со *. Интерграция с Slack. Канал https://devops-team-otus.slack.com/messages/CB9HGPYMA
