@@ -1,0 +1,16 @@
+---
+- name: Install Docker
+  hosts: all
+  become: true
+  tags: docker-host
+
+  vars:
+    docker_edition: 'ce'
+    docker_service_state: started
+    docker_service_enabled: yes
+    docker_install_compose: False
+    pip_install_packages:
+      - name: docker
+  roles:
+    - geerlingguy.docker
+    - geerlingguy.pip

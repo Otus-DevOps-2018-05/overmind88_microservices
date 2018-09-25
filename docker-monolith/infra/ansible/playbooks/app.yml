@@ -1,0 +1,14 @@
+---
+- name: Run app container
+  hosts: all
+  become: true
+  tags: docker-container
+
+  tasks:
+    - name: Run application container
+      docker_container:
+        name: otus-reddit
+        state: started
+        image: "overmind88/otus-reddit:1.0"
+        ports:
+          - "9292:9292"

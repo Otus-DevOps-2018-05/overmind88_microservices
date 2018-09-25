@@ -1,0 +1,38 @@
+{
+    "variables": {
+        "project_id": null,
+        "source_image_family": null,
+        "machine_type": "f1-micro",
+        "disk_size": "10",
+        "disk_type": "",
+        "tags": "docker-host",
+        "network": "default",
+        "image_description": "Image contains docker prepared for reddit app"
+    },
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "{{user `project_id`}}",
+            "image_name": "docker-host-{{timestamp}}",
+            "image_family": "docker-host",
+            "source_image_family": "{{user `source_image_family`}}",
+            "zone": "europe-west1-b",
+            "ssh_username": "gcp",
+            "machine_type": "{{user `machine_type`}}",
+            "disk_size": "{{user `disk_size`}}",
+            "disk_type": "{{user `disk_type`}}",
+            "tags": "{{user `tags`}}",
+            "network": "{{user `network`}}",
+            "image_description": "{{user `image_description`}}"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "ansible",
+            "extra_arguments": ["--tags","docker-host"],
+            "ansible_env_vars": ["ANSIBLE_ROLES_PATH={{ pwd }}/ansible/roles",
+                "ANSIBLE_SSH_ARGS='-o IdentitiesOnly=yes'"],
+            "playbook_file": "ansible/playbooks/site.yml"
+        }
+    ]
+}

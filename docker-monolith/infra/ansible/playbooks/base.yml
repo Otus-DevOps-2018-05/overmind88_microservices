@@ -1,0 +1,17 @@
+---
+- name: Check && install python and python-apt
+  hosts: all
+  become: true
+  gather_facts: False
+  tags: docker-host
+
+  tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+      changed_when: False
+
+    - name: Install python-apt
+      apt:
+        pkg: python-apt
+        state: present
+        cache_valid_time: 86400
