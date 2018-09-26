@@ -6,6 +6,7 @@ env:
   global:
   - TF_VERSION="0.11.7"
   - TFLINT_VERSION="0.7.1"
+  - HADOLINT="${HOME}/hadolint"
 
 before_install:
   - curl https://raw.githubusercontent.com/express42/otus-homeworks/2018-05/run.sh |
@@ -17,6 +18,8 @@ before_install:
 
 install:
   - sudo pip install -r docker-monolith/infra/ansible/requirements.txt
+  - curl -sL -o ${HADOLINT} "https://github.com/hadolint/hadolint/releases/download/v1.12.0/hadolint-Linux-x86_64"
+    && chmod 700 ${HADOLINT}
 
 script:
   - ansible --version
@@ -29,6 +32,7 @@ script:
   - find docker-monolith/infra/terraform -type f -name '*.tf' -exec tflint  {} \;
   - find docker-monolith/infra/ -type f -name '*.json' -exec packer validate -var-file=packer/variables.json.example {} \;
   - find docker-monolith/infra/ -type f -name '*.yml' -exec ansible-lint {} \;
+  - find src -type f -name 'Dockerfile*' -exec ${HADOLINT}{} \;
 
 notifications:
   slack:
