@@ -79,3 +79,4 @@ ansible
 - добавлены запуск prometheus и node-exporter в docker-compose
 - проверены запуск и работоспособность приложения и prometheus
 - проверена работоспособность мониторинга прибиванием одного из сервисов
+- Ссылка на docker hub https://hub.docker.com/u/overmind88/
