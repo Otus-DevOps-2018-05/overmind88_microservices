@@ -62,3 +62,11 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 - Задание со * по разворачиванию раннеров. Разворачивание описано в terraform и
 ansible
 - Задание со *. Интерграция с Slack. Канал https://devops-team-otus.slack.com/messages/CB9HGPYMA
+
+# ДЗ №17
+
+Что было сделано:
+- расписал dev-окружение
+- расписал stage и production окружения
+- добавил условие, которое позволяет выкатывать в stage и на prod только помеченное тегом с версией
+- добавил задание, которое определяет динамическое окружение для веток
