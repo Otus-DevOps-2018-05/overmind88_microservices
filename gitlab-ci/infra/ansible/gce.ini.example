@@ -1,0 +1,13 @@
+[gce]
+libcloud_secrets =
+gce_service_account_email_address = username@projectname.iam.gserviceaccount.com
+gce_service_account_pem_file_path = ~/path/to/key-file.json
+gce_project_id = projectname
+gce_zone =
+
+[inventory]
+inventory_ip_type =
+
+[cache]
+cache_path = ~/.ansible/tmp
+cache_max_age = 300

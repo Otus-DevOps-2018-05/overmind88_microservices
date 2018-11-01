@@ -37,7 +37,7 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 - Для контейнеров UI и comment написаны Dockerfile.1 с созданием образа на основе alpine
 - В .travis.yml добавдена проверка hadolint
 
-# ДЗ №14
+# ДЗ №15
 
 Что было сделано:
 - Изучена работа драйверов для сети none, host, bridge
@@ -49,3 +49,16 @@ docker run -d --env COMMENT_SERVICE_HOST=reddit_comment --env POST_SERVICE_HOST=
 - - Создан docker-compose.override.yml в котором код каждого приложения монтируется из локального каталога в volume. Это хорошо работает для локальной разработки - файлы меняются в локальном каталоге и изменения тут же отражаются при обновлении страницы на локалхосте. При использовании docker-machine такой подход вызывает сложности - небоходимо либо копировать код каждый раз на хост с докером либо изменять код непосредственно на нём.
 
 1. https://docs.docker.com/compose/reference/envvars/#compose_project_name
+
+# ДЗ №16
+
+Что было сделано:
+- Сделано разворачивание инстанса gitlab через terraform и ansible по подобию
+того как было сделано в docker-2. docker-compose.yml не используется,
+всё заgускается через ansible
+- - terraform apply
+- - ansible-playbook --tags "docker-container" playbooks/site.yml
+- Все задачи связанные с настройкой пайплайна в gitlab
+- Задание со * по разворачиванию раннеров. Разворачивание описано в terraform и
+ansible
+- Задание со *. Интерграция с Slack. Канал https://devops-team-otus.slack.com/messages/CB9HGPYMA

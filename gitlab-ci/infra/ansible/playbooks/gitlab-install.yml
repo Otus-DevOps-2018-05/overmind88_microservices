@@ -1,0 +1,36 @@
+---
+- name: "Gitlab deploy"
+  hosts: tag_docker-host
+  become: true
+  tags: docker-container
+  tasks:
+    - name: "Create folders for Gitlab"
+      file:
+        path: '/srv/gitlab/{{item}}'
+        state: directory
+      with_items:
+        - ['config','data','logs']
+
+#    - name: get1
+#      debug: msg="{{ hostvars['docker-host-0'].gce_public_ip }}"
+
+
+    - name: "Run gitlab container"
+    # https://docs.gitlab.com/omnibus/docker/README.html#install-gitlab-using-docker-compose
+      docker_container:
+        name: web
+        image: gitlab/gitlab-ce:latest
+        restart_policy: always
+        hostname: gitlab.example.com
+        env:
+          GITLAB_OMNIBUS_CONFIG: external_url 'http://{{ hostvars['docker-host-0'].gce_public_ip }}'
+        published_ports:
+          - '80:80'
+          - '443:443'
+          - '2222:22'
+        volumes:
+          - '/srv/gitlab/config:/etc/gitlab'
+          - '/srv/gitlab/logs:/var/log/gitlab'
+          - '/srv/gitlab/data:/var/opt/gitlab'
+
+
