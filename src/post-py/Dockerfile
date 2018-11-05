@@ -1,5 +1,10 @@
 FROM python:3.6.0-alpine
 
+# hadolint ignore=DL3008
+RUN apk --update --no-cache add \
+    gcc musl-dev \
+    &&  rm -rf /var/cache/apk/*
+
 WORKDIR /app
 COPY . /app
 
